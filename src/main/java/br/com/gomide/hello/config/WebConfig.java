@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    @Value("${cors.originPatterns:}")
+    @Value("${cors.originPatterns:}") // Valor padrão como string vazia
     private String corsOriginPatterns;
 
     @Override
@@ -20,8 +20,8 @@ public class WebConfig implements WebMvcConfigurer {
         }
 
         registry.addMapping("/**")
-                .allowedOrigins("*") // Permite todas as origens
-                .allowedMethods("GET", "POST", "PUT", "DELETE") // Permite métodos HTTP
-                .allowCredentials(true); // Permite envio de credenciais
+                .allowedOrigins(allowedPatterns) // Permite apenas origens configuradas
+                .allowedMethods("*")             // Permite todos os métodos HTTP
+                .allowCredentials(true);         // Permite envio de credenciais
     }
 }
