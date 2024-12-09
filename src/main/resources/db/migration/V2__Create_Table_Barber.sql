@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS barber (
+  id BIGSERIAL PRIMARY KEY,
+  nome_barbearia VARCHAR(255) NOT NULL,
+  distancia VARCHAR(255) NOT NULL,
+  imagem VARCHAR(255)
+);
